@@ -7,7 +7,8 @@ def chat_server():
     with socket(AF_INET,SOCK_DGRAM) as s:
         s.bind((HOST,PORT))
         s.setsockopt(SOL_SOCKET,SO_BROADCAST,1)
-        msg= s.recvfrom(BUFFER_SIZE)
-        print(msg[0].decode())
+        while True:
+            msg= s.recvfrom(BUFFER_SIZE)
+            print(msg[0].decode())
 if __name__ == '__main__':
     chat_server()
